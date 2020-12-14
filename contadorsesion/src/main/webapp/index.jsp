@@ -9,6 +9,6 @@
     </head>
     <body>
         <h1>Contador de visitas con variables de sesion</h1>
-        <a href="contadorsesion">Contador Sesion</a>
+        <a href="contadorsesion">Contador de variables de sesion</a>
     </body>
 </html>
