@@ -34,12 +34,7 @@ public class servletlogin extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
-            String usuario = request.getParameter("usuario");
-            String password = request.getParameter("password");
-            Cookie cookies[] = request.getCookies();
-            Cookie c = new Cookie("usuario", usuario);
-            c.setMaxAge(60);
-            response.addCookie(c);
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -47,6 +42,17 @@ public class servletlogin extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet servletlogin at " + request.getContextPath() + "</h1>");
+            String usuario = request.getParameter("usuario");
+            String password = request.getParameter("password");
+            if (usuario != "" && password != ""){
+                Cookie c = new Cookie("usuario", usuario);
+                c.setMaxAge(60);
+                response.addCookie(c);
+                out.println("<h2> Logeado con exito </h2>");
+                out.println("<h3><a href=\"servletprincipal\">Ver Login</a></h3>");
+            } else {
+                out.println("<h3><a href=\"index.jsp\">Debe hacer login</a></h3>");
+            }
             out.println("</body>");
             out.println("</html>");
         } finally {

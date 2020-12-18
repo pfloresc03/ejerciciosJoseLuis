@@ -42,19 +42,20 @@ public class servletprincipal extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet servletprincipal at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
             Cookie cookies[] = request.getCookies();
             if (cookies != null){
                 for(int i=0; i<cookies.length; i++){
                     if (cookies[i].getName().equals("usuario")){
-                        //Obtenemos el valor del contador de visitas actual
                         out.println("<h2> Está usted logeado con el usuario "+cookies[i].getValue()+"</h2>");
                     } else {
                         out.println("<h3><a href=\"index.jsp\">Debe hacer login</a></h3>");
                     }
                 }
             } 
+            out.println("</body>");
+            out.println("</html>");
+            
+            
         } finally {
             out.close();
         }
