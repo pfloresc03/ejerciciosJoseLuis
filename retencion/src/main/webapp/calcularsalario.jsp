@@ -29,5 +29,6 @@
         <h3>El salario bruto es: <%= bruto %></h3>
         <h3>La retencion es del <%= retencion %>%</h3>
         <h3>El salario neto es: <%= neto %></h3>
+        
     </body>
 </html>
