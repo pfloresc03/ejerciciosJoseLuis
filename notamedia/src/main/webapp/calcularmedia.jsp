@@ -14,16 +14,15 @@
     <body>
         <% String nombre=request.getParameter("nombre"); %>
         <h1><%= nombre %></h1>
-        <% int num1=Integer.parseInt(request.getParameter("num1"));
-        int num2=Integer.parseInt(request.getParameter("num2"));
-        int num3=Integer.parseInt(request.getParameter("num3"));
+        <%@page import="clases.Media" %>
+        <% String num1=request.getParameter("num1");
+        String num2=request.getParameter("num2");
+        String num3=request.getParameter("num3");
         String mensaje="";
-        double media = 0;
-        double suma = num1+num2+num3;
-        media = suma/3;
+        Media notaMedia = new Media(num1, num2, num3);
         %>
-        <h3>La nota media es: <%= media %></h3>
-        <% if (media<5) {
+        <h3>La nota media es: <%= notaMedia.getMedia() %></h3>
+        <% if (notaMedia.getMedia()<5) {
             mensaje = "<p style=color:red> Suspenso</p>";
         } else {
             mensaje = "<p style=color:green> Aprovado</p>";

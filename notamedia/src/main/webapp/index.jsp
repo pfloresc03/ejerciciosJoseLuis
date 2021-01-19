@@ -11,9 +11,9 @@
         <h1>Nota Media</h1>
         <form action="calcularmedia.jsp">
             Nombre: <input type="text" name="nombre"><br>
-            Nota 1: <input type="number" name="num1"><br>
-            Nota 2: <input type="number" name="num2"><br>
-            Nota 3: <input type="number" name="num3"><br>
+            Nota 1: <input type="text" name="num1"><br>
+            Nota 2: <input type="text" name="num2"><br>
+            Nota 3: <input type="text" name="num3"><br>
             <input type="submit" value="Calcular Media">
         </form>
     </body>
