@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.Alumnos;
 import Modelo.Utilidades;
 import java.io.File;
 import java.io.IOException;
@@ -74,7 +75,7 @@ public class AlumnosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<String> alumnos = Utilidades.getAlumnos(rutaFicheros.concat(File.separator).concat("2daw_a.txt"));
+        ArrayList<Alumnos> alumnos = Utilidades.getAlumnos(rutaFicheros.concat(File.separator).concat("2daw_a.txt"));
         request.setAttribute("grupos", grupos);
         request.setAttribute("grupo", "2daw_a");
         request.setAttribute("alumnos", alumnos);
@@ -92,10 +93,10 @@ public class AlumnosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String archivoSeleccionado = request.getParameter("grupo").replace(" ","").concat(".txt");
-        ArrayList<String> alumnos = Utilidades.getAlumnos(rutaFicheros.concat(File.separator).concat(archivoSeleccionado));
+        String archivoSeleccionado = request.getParameter("grupo").concat(".txt");
+        ArrayList<Alumnos> alumnos = Utilidades.getAlumnos(rutaFicheros.concat(File.separator).concat(archivoSeleccionado));
         request.setAttribute("grupos", grupos);
-        request.setAttribute("grupo", request.getParameter("provincia"));
+        request.setAttribute("grupo", request.getParameter("grupo"));
         request.setAttribute("alumnos", alumnos);
         request.getRequestDispatcher("alumnos.jsp").forward(request,response);
     }

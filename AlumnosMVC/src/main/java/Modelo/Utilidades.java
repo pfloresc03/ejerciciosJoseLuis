@@ -18,27 +18,33 @@ import java.util.ArrayList;
  * @author Pablo Flores
  */
 public class Utilidades {
-	public static ArrayList<String> getAlumnos(String fichero) throws FileNotFoundException, IOException{
-		ArrayList<String> alumnos = new ArrayList<String>();
+	public static ArrayList<Alumnos> getAlumnos(String fichero) throws FileNotFoundException, IOException{
+		ArrayList<Alumnos> alumnos = new ArrayList<Alumnos>();
 		
 		try {
 			
-			BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fichero), "utf-8"));
-			String alumno;			
-			try {
-				
-				while((alumno = buffer.readLine())!=null) {
-					alumnos.add(alumno);					
-				 }
-				
-				buffer.close();
-			} catch (IOException e) {
-				
-			}
+                    BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fichero), "utf-8"));
+                    String linea;			
+                    try {
+
+                        while((linea = buffer.readLine())!=null) {
+                            String[] atributosProducto = linea.split(";");
+                            Alumnos prod = new Alumnos(
+                                            Integer.parseInt(atributosProducto[0]),
+                                            atributosProducto[1],
+                                            atributosProducto[2],
+                                            atributosProducto[3]);
+                            alumnos.add(prod);
+                         }
+
+                            buffer.close();
+                    } catch (IOException e) {
+
+                    }
 		
 		} catch (UnsupportedEncodingException e) {
 			
 		}
-		return alumnos;		
+		return alumnos;	
 	}
 }

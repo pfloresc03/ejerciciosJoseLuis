@@ -4,6 +4,7 @@
     Author     : Pablo Flores
 --%>
 
+<%@page import="Modelo.Alumnos"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
         <% 
             String grupoActivo = ( String ) request.getAttribute("grupo");
             ArrayList<String> grupos = ( ArrayList<String> ) request.getAttribute("grupos");
-            ArrayList<String> alumnos = ( ArrayList<String> ) request.getAttribute("alumnos");
+            ArrayList<Alumnos> alumnos = ( ArrayList<Alumnos> ) request.getAttribute("alumnos");
          %>
          Grupo Seleccionado: <%=grupoActivo%> <br>
          <form action="AlumnosServlet" method="post">
@@ -40,12 +41,13 @@
          
           Alumnos: 
           <table border="red">
-              <% 
-                 
-                 for ( String alu: alumnos) { 
+              <%
+                 for ( Alumnos alu: alumnos ){
                  %>
               <tr>
-                  <td><%= alu %></td>
+                  <td><%= alu.getNombre() %></td>
+                  <td><%= alu.getApellidos() %></td>
+                  <td><%= alu.getCorreo() %></td>
                   <td><input type="checkbox"></td>
               </tr>
               <% } %>
