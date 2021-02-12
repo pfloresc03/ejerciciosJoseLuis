@@ -38,8 +38,8 @@
          <input type="submit" value="Enviar">
          </form>
          <br>
-         
-          Alumnos: 
+         <form action="AlumnosServlet" method="post">
+             Alumnos: <input type="text" name="grupo" value="<%= grupoActivo %>">
           <table border="red">
               <%
                  for ( Alumnos alu: alumnos ){
@@ -48,9 +48,11 @@
                   <td><%= alu.getNombre() %></td>
                   <td><%= alu.getApellidos() %></td>
                   <td><%= alu.getCorreo() %></td>
-                  <td><input type="checkbox"></td>
+                  <td><input type="checkbox" value=1 name="<%= alu.getId() %>"></td>
               </tr>
               <% } %>
           </table>
+          <input type="submit" value="Enviar">
+         </form>
     </body>
 </html>

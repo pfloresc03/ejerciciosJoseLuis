@@ -98,6 +98,27 @@ public class AlumnosServlet extends HttpServlet {
         request.setAttribute("grupos", grupos);
         request.setAttribute("grupo", request.getParameter("grupo"));
         request.setAttribute("alumnos", alumnos);
+        ArrayList<Alumnos> mensajes = new ArrayList();
+        for (int i=0; i<10; i++){
+            
+            if (request.getParameter(String.valueOf(i))!=null){
+                for (Alumnos alu: alumnos){
+                    if (alu.getId() == i){
+                        Alumnos mensajeAlumno = new Alumnos(alu.getId(),
+                                alu.getNombre(),alu.getApellidos(),alu.getCorreo());
+                        mensajes.add(mensajeAlumno);
+                    }
+                }
+                
+            }
+             
+        }
+        if (mensajes.size()!=0){
+            request.setAttribute("mensajes", mensajes);
+            request.getRequestDispatcher("Mensaje.jsp").forward(request,response);
+        }
+            
+        
         request.getRequestDispatcher("alumnos.jsp").forward(request,response);
     }
 
