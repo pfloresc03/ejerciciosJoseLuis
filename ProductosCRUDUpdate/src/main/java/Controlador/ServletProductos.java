@@ -51,7 +51,12 @@ public class ServletProductos extends HttpServlet {
             miProducto.setCategoria("postres");
             miProducto.setPrecio(6.0f);
             ProductosCRUD.actualizaProductoConParametros(miProducto);
-            ProductosCRUD.insertaProducto();
+            Productos prod = new Productos();
+            prod.setNombre("Tarta de fresa");
+            prod.setImagen("tartafresa.jpg");
+            prod.setCategoria("postres");
+            prod.setPrecio(8.0f);
+            ProductosCRUD.insertaProducto(prod);
             for (Productos p: misProductos){
                 out.println("<p>" + p.getNombre() + "</p>");
             }
